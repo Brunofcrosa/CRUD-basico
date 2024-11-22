@@ -1,0 +1,15 @@
+.main {
+  font-family: "Oswald", sans-serif;
+  background-color: rgb(217, 232, 245);
+}
+.card:hover {
+	transform: scale(1.1);
+}
+
+thead{
+  background-color: #7fa5d1;
+}
+td {
+  background-color: white;
+}
+
