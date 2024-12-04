@@ -1,4 +1,8 @@
-.footer-bg-blue {
+footer {
   background-color: #567BB4;
-  height: 10vh;
+  margin: 0;
+  padding: 0;
+  border-top: none;
+  height: 13vh;
 }
+

@@ -1,74 +1,63 @@
-<div class="container my-5">
+
+<div class="container">
   <div class="row">
     <div class="col-md-3">
       <div class="card">
         <div class="card-body text-center">
           <img ngSrc="/assets/imgs/conta.png" alt="User Avatar" class="rounded-circle mb-1" height="150" width="150">
-          <h5 class="card-title">Fulano</h5>
-          <p class="text-muted">fulano@example.com</p>
+          <h5 class="card-title">Bruno</h5>
+          <p class="text-muted">bruno@example.com</p>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <a routerLink="/suporte" class="text-decoration-none">Criar um Ticket</a>
-          </li>
+        <ul class="list-group list-group-flush text-center">
           <li class="list-group-item">
             <a href="#" class="text-decoration-none" (click)="logout()">Sair</a>
           </li>
         </ul>
       </div>
     </div>
-    <div class="col-md-9">
+
+    <div class="col-md-8">
       <div class="card">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header bg-primary text-white text-center">
           Minha Conta
         </div>
         <div class="card-body">
-          <h5>Bem-vindo, Fulano!</h5>
-          <div class="mt-4">
-            <h6>Informações do Perfil</h6>
+          <h4>Bem-vindo, Bruno!</h4>
+
+          <div class="mt-1">
+            <h6 class="text-center">Informações do Perfil</h6>
             <table class="table">
               <tbody>
-              <tr>
-                <th scope="row">Nome:</th>
-                <td>Fulano</td>
-              </tr>
-              <tr>
-                <th scope="row">Email:</th>
-                <td>fulano@example.com</td>
-              </tr>
-              <tr>
-                <th scope="row">Telefone:</th>
-                <td>(55) XXXX-XXXX</td>
-              </tr>
+              <tr><th scope="row">Nome:</th><td>Bruno</td></tr>
+              <tr><th scope="row">Email:</th><td>bruno@example.com</td></tr>
+              <tr><th scope="row">Telefone:</th><td>(55) XXXX-XXXX</td></tr>
               </tbody>
             </table>
           </div>
-          <!-- Formulário para criar um novo ticket -->
-          <div class="mt-4">
-            <h6>Criar Ticket</h6>
-            <button (click)="createTicket()" class="btn btn-primary">Criar Novo Ticket</button>
+          <div class="text-center mt-5">
+            <button [routerLink]="['/suporte']" class="btn btn-primary">Criar Novo Ticket</button>
           </div>
-          <!-- Formulário de edição de ticket -->
-          <div *ngIf="editTicket" class="mt-4">
-            <h3>Editar Ticket</h3>
+
+          <div *ngIf="editTicket" class="mt-5">
+            <h3>Editar Assunto</h3>
             <input [(ngModel)]="editTicket.title" placeholder="Título" class="form-control mb-2" />
-            <input [(ngModel)]="editTicket.description" placeholder="Descrição" class="form-control mb-2" />
             <button (click)="saveEdit()" class="btn btn-success">Salvar</button>
             <button (click)="editTicket = null" class="btn btn-secondary">Cancelar</button>
           </div>
-          <div class="mt-4">
-            <!-- Lista de tickets -->
-            <div class="mt-4">
+
+
+            <div class="mt-2text-center py-5">
               <h3>Lista de Tickets</h3>
               <ul class="list-group">
                 <li *ngFor="let ticket of tickets" class="list-group-item d-flex justify-content-between align-items-center">
                   <div>
-                    <strong>{{ ticket.title }}</strong>: {{ ticket.description }}
+                    <strong>Assunto</strong>: {{ ticket.title }}
                     <br />
-                    <p>Protocolo: {{ ticket.id }}</p>
+                    <p> Protocolo: {{ ticket.id }}</p>
                   </div>
                   <div>
                     <button (click)="startEdit(ticket)" class="btn btn-warning btn-sm">Editar</button>
+                    <button class="btn btn-sm">Visualizar</button>
                     <button (click)="deleteTicket(ticket.id)" class="btn btn-danger btn-sm">Excluir</button>
                   </div>
                 </li>
@@ -79,4 +68,5 @@
       </div>
     </div>
   </div>
-</div>
+
+

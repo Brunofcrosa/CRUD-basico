@@ -13,29 +13,15 @@ export class PainelDoJogadorComponent implements OnInit {
   tickets: Ticket[] = [];
   editTicket: Ticket | null = null;
 
-  private currentProtocol: number;
-  private maxProtocol: number;
-
-  constructor(private ticketService: TicketService, private router: Router) {
-    const maxDigitos = 4;
-    const minProtocol = Math.pow(10, maxDigitos - 1); //
-    this.maxProtocol = Math.pow(10, maxDigitos) - 1; //
-    this.currentProtocol = minProtocol - 1; //
-  }
+  constructor(private ticketService: TicketService, private router: Router) {}
 
   ngOnInit() {
-    this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    if (!this.isLoggedIn) {
-      this.router.navigate(['/pagina-inicio']);
-    } else {
       this.refreshTickets();
-    }
   }
 
   logout() {
     localStorage.removeItem('isLoggedIn');
     this.isLoggedIn = false;
-    this.router.navigate(['/pagina-inicio']);
   }
 
   refreshTickets(): void {
@@ -56,23 +42,6 @@ export class PainelDoJogadorComponent implements OnInit {
 
   deleteTicket(id: number): void {
     this.ticketService.deleteTicket(id);
-    this.refreshTickets();
-  }
-
-  generateProtocolNumber(): number {
-    if (this.currentProtocol >= this.maxProtocol) {
-      throw new Error('Todos os números possíveis foram gerados.');
-    }
-    this.currentProtocol++;
-    return this.currentProtocol;
-  }
-  createTicket(): void {
-    const newTicket: Ticket = {
-      id: this.generateProtocolNumber(),
-      title: 'Assunto',
-      description: '',
-    };
-    this.ticketService.addTicket(newTicket);
     this.refreshTickets();
   }
 }

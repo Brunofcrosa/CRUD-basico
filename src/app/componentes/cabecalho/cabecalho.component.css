@@ -2,8 +2,9 @@ a.active {
   font-weight: bold;
 }
 
-.navbar-custom {
+
+.navbar{
+  height: 7vh;
   background-color: #567BB4;
 }
-
 

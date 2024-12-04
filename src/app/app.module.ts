@@ -13,7 +13,6 @@ import { AtualizacoesComponent } from './componentes/atualizacoes/atualizacoes.c
 import { SuporteComponent } from './componentes/suporte/suporte.component';
 import {NgOptimizedImage} from "@angular/common";
 import { PainelDoJogadorComponent } from './componentes/painel-do-jogador/painel-do-jogador.component';
-import { TicketComponent } from './componentes/ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +24,7 @@ import { TicketComponent } from './componentes/ticket/ticket.component';
     SobreOJogoComponent,
     AtualizacoesComponent,
     SuporteComponent,
-    PainelDoJogadorComponent,
-    TicketComponent
+    PainelDoJogadorComponent
   ],
   imports: [
     BrowserModule,
