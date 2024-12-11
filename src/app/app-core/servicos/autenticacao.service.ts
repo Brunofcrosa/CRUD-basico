@@ -18,6 +18,10 @@ isLoggedIn$ = this.isLoggedInSubject.asObservable();
     localStorage.setItem('isLoggedIn', 'true');
     this.isLoggedInSubject.next(true);
   }
+  logout() {
+    localStorage.removeItem('isLoggedIn');
+    this.isLoggedInSubject.next(false);
+  }
   }
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ticket } from '../../app-core/model/ticket.model';
 import { TicketService } from '../../app-core/servicos/ticket.service';
 import { Router } from '@angular/router';
+import { AutenticacaoService } from '../../app-core/servicos/autenticacao.service';
 
 @Component({
   selector: 'app-painel-do-jogador',
@@ -13,15 +14,17 @@ export class PainelDoJogadorComponent implements OnInit {
   tickets: Ticket[] = [];
   editTicket: Ticket | null = null;
 
-  constructor(private ticketService: TicketService, private router: Router) {}
+  constructor(private ticketService: TicketService, private router: Router, private authService: AutenticacaoService) {}
 
   ngOnInit() {
+      this.authService.isLoggedIn$.subscribe(status => {
+      this.isLoggedIn = status;
+    });
       this.refreshTickets();
   }
 
   logout() {
-    localStorage.removeItem('isLoggedIn');
-    this.isLoggedIn = false;
+    this.authService.logout();
   }
 
   refreshTickets(): void {
